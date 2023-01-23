@@ -15,7 +15,29 @@ struct SocketClientReader {
         if clearBuffer { connection.clearBuffer() }
         return data
     }
-        
+    
+    func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> String {
+        return try await withCheckedThrowingContinuation { continuation in
+            Task {
+                var timeSpent:Double = 0
+                while !(String(data: connection.data, encoding: .utf8)?.contains(delimiter) ?? false) {
+                    if timeSpent > timeoutMs {
+                        return continuation.resume(throwing: SocketClient.Errors.timeout)
+                    }
+                    try await Task.sleep(nanoseconds: 100_000_000)   //1_000_000_000 => Seconds
+                    timeSpent += 100
+                }
+                let strings = String(data: connection.data, encoding: .utf8)!.components(separatedBy: delimiter)
+                if strings.count > 1 {
+                    connection.data = strings[1...].joined(separator: delimiter).data(using: .utf8)!
+                }else{
+                    connection.clearBuffer()
+                }
+                continuation.resume(returning: strings.first!)
+            }
+        }
+    }
+    
     func read(to delimiter:Data?, timeoutMs:Double = 10000) async throws -> Data {
         guard let delimiter else { return Data() }
         return try await withCheckedThrowingContinuation { continuation in

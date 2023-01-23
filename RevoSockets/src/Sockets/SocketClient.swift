@@ -59,8 +59,11 @@ public class SocketClient {
     }
     
     func readAsString(to delimiter:String, timeoutMs:Double = 10000) async throws -> String? {
+        guard #available(iOS 16, *) else {
+            return try await SocketClientReader(connection: connection).read(to: delimiter, timeoutMs: timeoutMs)
+        }
         let data = try await read(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
-        return String(data: data, encoding: .utf8)
+        return String(data: data, encoding: .utf8)        
     }
     
     func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> Data{
