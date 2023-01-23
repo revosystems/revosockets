@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA1A6E90297E9D45002D8C67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6E8F297E9D45002D8C67 /* AppDelegate.swift */; };
+		EA1A6E92297E9D45002D8C67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6E91297E9D45002D8C67 /* SceneDelegate.swift */; };
+		EA1A6E94297E9D45002D8C67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6E93297E9D45002D8C67 /* ViewController.swift */; };
+		EA1A6E97297E9D45002D8C67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1A6E95297E9D45002D8C67 /* Main.storyboard */; };
+		EA1A6E99297E9D47002D8C67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1A6E98297E9D47002D8C67 /* Assets.xcassets */; };
+		EA1A6E9C297E9D47002D8C67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1A6E9A297E9D47002D8C67 /* LaunchScreen.storyboard */; };
+		EA1A6EA7297E9D47002D8C67 /* RevoSocketsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EA6297E9D47002D8C67 /* RevoSocketsTests.swift */; };
+		EA1A6EB1297E9D47002D8C67 /* RevoSocketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EB0297E9D47002D8C67 /* RevoSocketsUITests.swift */; };
+		EA1A6EB3297E9D47002D8C67 /* RevoSocketsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EB2297E9D47002D8C67 /* RevoSocketsUITestsLaunchTests.swift */; };
+		EA1A6EC6297E9D6B002D8C67 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EC1297E9D6B002D8C67 /* SocketServer.swift */; };
+		EA1A6EC7297E9D6B002D8C67 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EC2297E9D6B002D8C67 /* ServerConnection.swift */; };
+		EA1A6EC8297E9D6B002D8C67 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EC3297E9D6B002D8C67 /* ClientConnection.swift */; };
+		EA1A6EC9297E9D6B002D8C67 /* SocketClientReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EC4297E9D6B002D8C67 /* SocketClientReader.swift */; };
+		EA1A6ECA297E9D6B002D8C67 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6EC5297E9D6B002D8C67 /* SocketClient.swift */; };
+		EA1A6ECD297E9DAE002D8C67 /* PingSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1A6ECC297E9DAE002D8C67 /* PingSocketServer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA1A6EA3297E9D47002D8C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA1A6E84297E9D45002D8C67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA1A6E8B297E9D45002D8C67;
+			remoteInfo = RevoSockets;
+		};
+		EA1A6EAD297E9D47002D8C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA1A6E84297E9D45002D8C67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA1A6E8B297E9D45002D8C67;
+			remoteInfo = RevoSockets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA1A6E8C297E9D45002D8C67 /* RevoSockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevoSockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA1A6E8F297E9D45002D8C67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA1A6E91297E9D45002D8C67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EA1A6E93297E9D45002D8C67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA1A6E96297E9D45002D8C67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA1A6E98297E9D47002D8C67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA1A6E9B297E9D47002D8C67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EA1A6E9D297E9D47002D8C67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA1A6EA2297E9D47002D8C67 /* RevoSocketsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevoSocketsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA1A6EA6297E9D47002D8C67 /* RevoSocketsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoSocketsTests.swift; sourceTree = "<group>"; };
+		EA1A6EAC297E9D47002D8C67 /* RevoSocketsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevoSocketsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA1A6EB0297E9D47002D8C67 /* RevoSocketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoSocketsUITests.swift; sourceTree = "<group>"; };
+		EA1A6EB2297E9D47002D8C67 /* RevoSocketsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoSocketsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EA1A6EC1297E9D6B002D8C67 /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
+		EA1A6EC2297E9D6B002D8C67 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
+		EA1A6EC3297E9D6B002D8C67 /* ClientConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
+		EA1A6EC4297E9D6B002D8C67 /* SocketClientReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientReader.swift; sourceTree = "<group>"; };
+		EA1A6EC5297E9D6B002D8C67 /* SocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
+		EA1A6ECC297E9DAE002D8C67 /* PingSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingSocketServer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA1A6E89297E9D45002D8C67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6E9F297E9D47002D8C67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6EA9297E9D47002D8C67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA1A6E83297E9D45002D8C67 = {
+			isa = PBXGroup;
+			children = (
+				EA1A6E8E297E9D45002D8C67 /* RevoSockets */,
+				EA1A6EA5297E9D47002D8C67 /* RevoSocketsTests */,
+				EA1A6EAF297E9D47002D8C67 /* RevoSocketsUITests */,
+				EA1A6E8D297E9D45002D8C67 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA1A6E8D297E9D45002D8C67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6E8C297E9D45002D8C67 /* RevoSockets.app */,
+				EA1A6EA2297E9D47002D8C67 /* RevoSocketsTests.xctest */,
+				EA1A6EAC297E9D47002D8C67 /* RevoSocketsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA1A6E8E297E9D45002D8C67 /* RevoSockets */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6EBF297E9D4D002D8C67 /* src */,
+				EA1A6E8F297E9D45002D8C67 /* AppDelegate.swift */,
+				EA1A6E91297E9D45002D8C67 /* SceneDelegate.swift */,
+				EA1A6E93297E9D45002D8C67 /* ViewController.swift */,
+				EA1A6E95297E9D45002D8C67 /* Main.storyboard */,
+				EA1A6E98297E9D47002D8C67 /* Assets.xcassets */,
+				EA1A6E9A297E9D47002D8C67 /* LaunchScreen.storyboard */,
+				EA1A6E9D297E9D47002D8C67 /* Info.plist */,
+			);
+			path = RevoSockets;
+			sourceTree = "<group>";
+		};
+		EA1A6EA5297E9D47002D8C67 /* RevoSocketsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6ECB297E9DA5002D8C67 /* Helpers */,
+				EA1A6EA6297E9D47002D8C67 /* RevoSocketsTests.swift */,
+			);
+			path = RevoSocketsTests;
+			sourceTree = "<group>";
+		};
+		EA1A6EAF297E9D47002D8C67 /* RevoSocketsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6EB0297E9D47002D8C67 /* RevoSocketsUITests.swift */,
+				EA1A6EB2297E9D47002D8C67 /* RevoSocketsUITestsLaunchTests.swift */,
+			);
+			path = RevoSocketsUITests;
+			sourceTree = "<group>";
+		};
+		EA1A6EBF297E9D4D002D8C67 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6EC0297E9D6B002D8C67 /* Sockets */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EA1A6EC0297E9D6B002D8C67 /* Sockets */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6EC1297E9D6B002D8C67 /* SocketServer.swift */,
+				EA1A6EC2297E9D6B002D8C67 /* ServerConnection.swift */,
+				EA1A6EC3297E9D6B002D8C67 /* ClientConnection.swift */,
+				EA1A6EC4297E9D6B002D8C67 /* SocketClientReader.swift */,
+				EA1A6EC5297E9D6B002D8C67 /* SocketClient.swift */,
+			);
+			path = Sockets;
+			sourceTree = "<group>";
+		};
+		EA1A6ECB297E9DA5002D8C67 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EA1A6ECC297E9DAE002D8C67 /* PingSocketServer.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA1A6E8B297E9D45002D8C67 /* RevoSockets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA1A6EB6297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSockets" */;
+			buildPhases = (
+				EA1A6E88297E9D45002D8C67 /* Sources */,
+				EA1A6E89297E9D45002D8C67 /* Frameworks */,
+				EA1A6E8A297E9D45002D8C67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevoSockets;
+			productName = RevoSockets;
+			productReference = EA1A6E8C297E9D45002D8C67 /* RevoSockets.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA1A6EA1297E9D47002D8C67 /* RevoSocketsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA1A6EB9297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSocketsTests" */;
+			buildPhases = (
+				EA1A6E9E297E9D47002D8C67 /* Sources */,
+				EA1A6E9F297E9D47002D8C67 /* Frameworks */,
+				EA1A6EA0297E9D47002D8C67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA1A6EA4297E9D47002D8C67 /* PBXTargetDependency */,
+			);
+			name = RevoSocketsTests;
+			productName = RevoSocketsTests;
+			productReference = EA1A6EA2297E9D47002D8C67 /* RevoSocketsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EA1A6EAB297E9D47002D8C67 /* RevoSocketsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA1A6EBC297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSocketsUITests" */;
+			buildPhases = (
+				EA1A6EA8297E9D47002D8C67 /* Sources */,
+				EA1A6EA9297E9D47002D8C67 /* Frameworks */,
+				EA1A6EAA297E9D47002D8C67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA1A6EAE297E9D47002D8C67 /* PBXTargetDependency */,
+			);
+			name = RevoSocketsUITests;
+			productName = RevoSocketsUITests;
+			productReference = EA1A6EAC297E9D47002D8C67 /* RevoSocketsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA1A6E84297E9D45002D8C67 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					EA1A6E8B297E9D45002D8C67 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					EA1A6EA1297E9D47002D8C67 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = EA1A6E8B297E9D45002D8C67;
+					};
+					EA1A6EAB297E9D47002D8C67 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = EA1A6E8B297E9D45002D8C67;
+					};
+				};
+			};
+			buildConfigurationList = EA1A6E87297E9D45002D8C67 /* Build configuration list for PBXProject "RevoSockets" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA1A6E83297E9D45002D8C67;
+			productRefGroup = EA1A6E8D297E9D45002D8C67 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA1A6E8B297E9D45002D8C67 /* RevoSockets */,
+				EA1A6EA1297E9D47002D8C67 /* RevoSocketsTests */,
+				EA1A6EAB297E9D47002D8C67 /* RevoSocketsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA1A6E8A297E9D45002D8C67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1A6E9C297E9D47002D8C67 /* LaunchScreen.storyboard in Resources */,
+				EA1A6E99297E9D47002D8C67 /* Assets.xcassets in Resources */,
+				EA1A6E97297E9D45002D8C67 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6EA0297E9D47002D8C67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6EAA297E9D47002D8C67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA1A6E88297E9D45002D8C67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1A6EC8297E9D6B002D8C67 /* ClientConnection.swift in Sources */,
+				EA1A6E94297E9D45002D8C67 /* ViewController.swift in Sources */,
+				EA1A6EC9297E9D6B002D8C67 /* SocketClientReader.swift in Sources */,
+				EA1A6EC6297E9D6B002D8C67 /* SocketServer.swift in Sources */,
+				EA1A6E90297E9D45002D8C67 /* AppDelegate.swift in Sources */,
+				EA1A6ECA297E9D6B002D8C67 /* SocketClient.swift in Sources */,
+				EA1A6EC7297E9D6B002D8C67 /* ServerConnection.swift in Sources */,
+				EA1A6E92297E9D45002D8C67 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6E9E297E9D47002D8C67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1A6EA7297E9D47002D8C67 /* RevoSocketsTests.swift in Sources */,
+				EA1A6ECD297E9DAE002D8C67 /* PingSocketServer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA1A6EA8297E9D47002D8C67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1A6EB1297E9D47002D8C67 /* RevoSocketsUITests.swift in Sources */,
+				EA1A6EB3297E9D47002D8C67 /* RevoSocketsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA1A6EA4297E9D47002D8C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA1A6E8B297E9D45002D8C67 /* RevoSockets */;
+			targetProxy = EA1A6EA3297E9D47002D8C67 /* PBXContainerItemProxy */;
+		};
+		EA1A6EAE297E9D47002D8C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA1A6E8B297E9D45002D8C67 /* RevoSockets */;
+			targetProxy = EA1A6EAD297E9D47002D8C67 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA1A6E95297E9D45002D8C67 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA1A6E96297E9D45002D8C67 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EA1A6E9A297E9D47002D8C67 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA1A6E9B297E9D47002D8C67 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA1A6EB4297E9D47002D8C67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EA1A6EB5297E9D47002D8C67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA1A6EB7297E9D47002D8C67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RevoSockets/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSockets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EA1A6EB8297E9D47002D8C67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RevoSockets/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSockets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EA1A6EBA297E9D47002D8C67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSocketsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevoSockets.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RevoSockets";
+			};
+			name = Debug;
+		};
+		EA1A6EBB297E9D47002D8C67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSocketsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevoSockets.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RevoSockets";
+			};
+			name = Release;
+		};
+		EA1A6EBD297E9D47002D8C67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSocketsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RevoSockets;
+			};
+			name = Debug;
+		};
+		EA1A6EBE297E9D47002D8C67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2VSE3YKKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.codepassion.RevoSocketsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RevoSockets;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA1A6E87297E9D45002D8C67 /* Build configuration list for PBXProject "RevoSockets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA1A6EB4297E9D47002D8C67 /* Debug */,
+				EA1A6EB5297E9D47002D8C67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA1A6EB6297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSockets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA1A6EB7297E9D47002D8C67 /* Debug */,
+				EA1A6EB8297E9D47002D8C67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA1A6EB9297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSocketsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA1A6EBA297E9D47002D8C67 /* Debug */,
+				EA1A6EBB297E9D47002D8C67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA1A6EBC297E9D47002D8C67 /* Build configuration list for PBXNativeTarget "RevoSocketsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA1A6EBD297E9D47002D8C67 /* Debug */,
+				EA1A6EBE297E9D47002D8C67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA1A6E84297E9D45002D8C67 /* Project object */;
+}
