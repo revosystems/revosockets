@@ -57,7 +57,7 @@ public class ServerConnection {
         dataReceivedCallback?(data, self)
     }
 
-    func send(data: Data) {
+    public func send(data: Data) {
         connection.send(content: data, completion: .contentProcessed( { error in
             if let error = error {
                 self.connectionDidFail(error: error)

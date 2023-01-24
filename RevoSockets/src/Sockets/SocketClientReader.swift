@@ -16,6 +16,7 @@ struct SocketClientReader {
         return data
     }
         
+    @available(iOS 16.0, *)
     func read(to delimiter:Data?, timeoutMs:Double = 10000) async throws -> Data {
         guard let delimiter else { return Data() }
         return try await withCheckedThrowingContinuation { continuation in

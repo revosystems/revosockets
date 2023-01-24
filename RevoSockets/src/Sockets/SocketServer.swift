@@ -2,7 +2,7 @@ import Foundation
 import Network
 //https://rderik.com/blog/building-a-server-client-aplication-using-apple-s-network-framework/
 
-public class SocketServer {
+open class SocketServer {
     let port: NWEndpoint.Port
     let listener: NWListener
 
@@ -10,13 +10,13 @@ public class SocketServer {
     
     private var connectionsByID: [Int: ServerConnection] = [:]
 
-    init(port: UInt16) throws {
+    public init(port: UInt16) throws {
         self.port = NWEndpoint.Port(rawValue: port)!
         listener = try NWListener(using: .tcp, on: self.port)
     }
 
     @discardableResult
-    func start(debug:Bool = false) throws -> Self {
+    public func start(debug:Bool = false) throws -> Self {
         self.debug = debug
         log("Socket Server Starting...")
         listener.stateUpdateHandler   = stateDidChange(to:)
@@ -45,7 +45,7 @@ public class SocketServer {
         log("Server did open connection \(connection.id)")
     }
     
-    func onDataReceived(data:Data, connection:ServerConnection){
+    open func onDataReceived(data:Data, connection:ServerConnection){
         
     }
 
@@ -54,7 +54,7 @@ public class SocketServer {
         log("Server did close connection \(connection.id)")
     }
 
-    private func stop() {
+    public func stop() {
         listener.stateUpdateHandler = nil
         listener.newConnectionHandler = nil
         listener.cancel()

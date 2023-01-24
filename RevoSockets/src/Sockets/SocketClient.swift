@@ -3,18 +3,18 @@ import Network
 
 public class SocketClient {
     let connection: ClientConnection
-    let host: NWEndpoint.Host
-    let port: NWEndpoint.Port
+    public let host: NWEndpoint.Host
+    public let port: NWEndpoint.Port
     
     var debug:Bool = false
     
-    enum Errors : Error {
+    public enum Errors : Error {
         case connectionError
         case timeout
         case connectionNotReady
     }
 
-    init(host: String, port: UInt16) {
+    public init(host: String, port: UInt16) {
         self.host = NWEndpoint.Host(host)
         self.port = NWEndpoint.Port(rawValue: port)!
         let nwConnection = NWConnection(host: self.host, port: self.port, using: .tcp)
@@ -22,8 +22,11 @@ public class SocketClient {
     }
 
     //MARK: - LifeCycle
+    /**
+    Connects to the socket and lets the connection open
+     */
     @discardableResult
-    func start(debug:Bool = false) async throws -> Self {
+    public func start(debug:Bool = false) async throws -> Self {
         self.debug = debug
         log("Client started \(host) \(port)")
         connection.debug = debug
@@ -32,50 +35,66 @@ public class SocketClient {
         return self
     }
 
-    func stop() {
+    /**
+    Closes the connection
+     */
+    public func stop() {
         connection.stop()
     }
 
     //MARK: - Send
+    /**
+    Converts the string to data and sends it throught the socket
+     */
     @discardableResult
-    func send(_ string:String) -> Self {
+    public func send(_ string:String) -> Self {
         send(string.data(using: .utf8))
     }
     
+    /**
+    Sends the data throught the socket
+     */
     @discardableResult
-    func send(_ data: Data?) -> Self {
+    public func send(_ data: Data?) -> Self {
         guard let data else { return self }
         connection.send(data: data)
         return self
     }
     
     //MARK: - Read
-    func readAsString(clearBuffer:Bool = true) throws -> String? {
+    /**
+     Gets whatever arrived to the socket and converts it to string
+     @param clearBuffer reads and clears the buffer if true, when fale, the buffer is not emptied
+     */
+    public func readAsString(clearBuffer:Bool = true) throws -> String? {
         try String(data: read(clearBuffer: clearBuffer), encoding: .utf8)
     }
         
-    func read(clearBuffer:Bool = true) throws -> Data {
+    public func read(clearBuffer:Bool = true) throws -> Data {
         try SocketClientReader(connection: connection).read(clearBuffer: clearBuffer)
     }
     
-    func readAsString(to delimiter:String, timeoutMs:Double = 10000) async throws -> String? {
+    @available(iOS 16.0, *)
+    public func readAsString(to delimiter:String, timeoutMs:Double = 10000) async throws -> String? {
         let data = try await read(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
         return String(data: data, encoding: .utf8)
     }
     
-    func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> Data{
+    @available(iOS 16.0, *)
+    public func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> Data{
         try await read(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
     }
     
-    func read(to delimiter:Data?, timeoutMs:Double = 10000) async throws -> Data {
+    @available(iOS 16.0, *)
+    public func read(to delimiter:Data?, timeoutMs:Double = 10000) async throws -> Data {
         try await SocketClientReader(connection: connection).read(to: delimiter, timeoutMs: timeoutMs)
     }
     
-    func read<T:Decodable>(to:T.Type, timeoutMs:Double = 10000) async throws -> T? {
+    public func read<T:Decodable>(to:T.Type, timeoutMs:Double = 10000) async throws -> T? {
         try await SocketClientReader(connection: connection).read(to:to, timeoutMs: timeoutMs)
     }
     
-    func clearBuffer(){
+    public func clearBuffer(){
         connection.clearBuffer()
     }
 
