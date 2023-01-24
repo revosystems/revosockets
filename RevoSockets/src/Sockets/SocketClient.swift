@@ -2,7 +2,7 @@ import Foundation
 import Network
 
 public class SocketClient {
-    let connection: ClientConnection
+    public let connection: ClientConnection
     public let host: NWEndpoint.Host
     public let port: NWEndpoint.Port
     
@@ -115,6 +115,10 @@ public class SocketClient {
     private func log(_ message:String) {
         if !debug { return }
         debugPrint(message)
+    }
+    
+    public var isReady:Bool {
+        connection.nwConnection.state == .ready
     }
 }
 

@@ -3,7 +3,7 @@ import Network
 
 public class ClientConnection {
 
-    let nwConnection: NWConnection
+    public let nwConnection: NWConnection
     let queue = DispatchQueue(label: "Client connection Q")
     
     var data:Data = Data()
