@@ -41,7 +41,11 @@ open class SocketServer {
         }
         connection.start()
         //connection.send(data: "Welcome you are connection: \(connection.id)".data(using: .utf8)!)
-        connection.dataReceivedCallback = onDataReceived(data:connection:)
+        //connection.dataReceivedCallback = onDataReceived(data:connection:)
+        connection.dataReceivedCallback = { [unowned self] data, connection in
+            print("Received data")
+            onDataReceived(data: data, connection: connection)
+        }
         log("Server did open connection \(connection.id)")
     }
     

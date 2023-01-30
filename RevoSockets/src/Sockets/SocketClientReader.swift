@@ -15,25 +15,27 @@ struct SocketClientReader {
         if clearBuffer { connection.clearBuffer() }
         return data
     }
+    
 
-    func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> String {
+    func oldRead(to delimiter:Data?, timeoutMs:Double = 10000) async throws -> Data {
+        guard let delimiter else { return Data() }
         return try await withCheckedThrowingContinuation { continuation in
             Task {
                 var timeSpent:Double = 0
-                while !(String(data: connection.data, encoding: .utf8)?.contains(delimiter) ?? false) {
+                while !connection.data.oldContains(delimiter) {
                     if timeSpent > timeoutMs {
                         return continuation.resume(throwing: SocketClient.Errors.timeout)
                     }
                     try await Task.sleep(nanoseconds: 100_000_000)   //1_000_000_000 => Seconds
                     timeSpent += 100
                 }
-                let strings = String(data: connection.data, encoding: .utf8)!.components(separatedBy: delimiter)
-                if strings.count > 1 {
-                    connection.data = strings[1...].joined(separator: delimiter).data(using: .utf8)!
+                let datas = connection.data.split(separator: delimiter)
+                if datas.count > 1 {
+                    connection.data = Data(datas[1...].joined(separator: delimiter))
                 }else{
                     connection.clearBuffer()
                 }
-                continuation.resume(returning: strings.first!)
+                continuation.resume(returning: datas.first!)
             }
         }
     }
@@ -102,5 +104,12 @@ private extension Data {
             chunks.append(self[pos..<endIndex])
         }
         return chunks
+    }
+    
+    func oldContains(_ needle:Data) -> Bool {
+        if let range = range(of: needle) {
+            return true
+        }
+        return false
     }
 }

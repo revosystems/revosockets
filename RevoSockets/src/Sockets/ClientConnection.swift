@@ -22,17 +22,16 @@ public class ClientConnection {
         }
         return try await withCheckedThrowingContinuation { continuation in
             log("Client connection will start")
-            //nwConnection.stateUpdateHandler = stateDidChange(to:)
             nwConnection.stateUpdateHandler = { [unowned self] state in
                 stateDidChange(to: state)
                 if state == .preparing { return }
                 guard state == .ready else {
                     return continuation.resume(throwing:SocketClient.Errors.connectionError)
                 }
+                setupReceive()
                 nwConnection.stateUpdateHandler = stateDidChange(to:)
                 continuation.resume()
             }
-            setupReceive()
             nwConnection.start(queue: queue)
         }        
     }

@@ -76,7 +76,8 @@ public class SocketClient {
     
     public func readAsString(to delimiter:String, timeoutMs:Double = 10000) async throws -> String? {
         guard #available(iOS 16, *) else {
-            return try await SocketClientReader(connection: connection).read(to: delimiter, timeoutMs: timeoutMs)
+            let data = try await SocketClientReader(connection: connection).oldRead(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
+            return String(data: data, encoding: .utf8)
         }
         let data = try await read(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
         return String(data: data, encoding: .utf8)        
@@ -84,7 +85,7 @@ public class SocketClient {
     
     public func read(to delimiter:String, timeoutMs:Double = 10000) async throws -> Data {
         guard #available(iOS 16, *) else {
-            return try await SocketClientReader(connection: connection).read(to: delimiter, timeoutMs: timeoutMs).data(using: .utf8)!
+            return try await SocketClientReader(connection: connection).oldRead(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
         }
         return try await read(to: delimiter.data(using: .utf8), timeoutMs: timeoutMs)
     }
