@@ -2,7 +2,7 @@ import Foundation
 import Network
 
 public class SocketClient {
-    public let connection: ClientConnection
+    public var connection: ClientConnection
     public let host: NWEndpoint.Host
     public let port: NWEndpoint.Port
     
@@ -17,8 +17,7 @@ public class SocketClient {
     public init(host: String, port: UInt16) {
         self.host = NWEndpoint.Host(host)
         self.port = NWEndpoint.Port(rawValue: port)!
-        let nwConnection = NWConnection(host: self.host, port: self.port, using: .tcp)
-        connection = ClientConnection(nwConnection: nwConnection)
+        connection = ClientConnection(nwConnection: NWConnection(host: self.host, port: self.port, using: .tcp))
     }
 
     //MARK: - LifeCycle
@@ -27,6 +26,10 @@ public class SocketClient {
      */
     @discardableResult
     public func start(debug:Bool = false) async throws -> Self {
+        if isReady { return self }
+        if connection.nwConnection.state == .cancelled {
+            connection = ClientConnection(nwConnection: NWConnection(host: self.host, port: self.port, using: .tcp))
+        }
         self.debug = debug
         log("Client started \(host) \(port)")
         connection.debug = debug
