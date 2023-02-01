@@ -17,6 +17,9 @@ open class SocketServer {
 
     @discardableResult
     public func start(debug:Bool = false) throws -> Self {
+        if listener.state == .ready {
+            return self
+        }
         self.debug = debug
         log("Socket Server Starting...")
         listener.stateUpdateHandler   = stateDidChange(to:)
