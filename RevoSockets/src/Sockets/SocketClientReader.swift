@@ -35,7 +35,7 @@ struct SocketClientReader {
                 }else{
                     connection.clearBuffer()
                 }
-                continuation.resume(returning: datas.first!)
+                continuation.resume(returning: datas.first ?? Data())
             }
         }
     }
@@ -59,7 +59,7 @@ struct SocketClientReader {
                 }else{
                     connection.clearBuffer()
                 }
-                continuation.resume(returning: datas.first!)
+                continuation.resume(returning: datas.first ?? Data())
             }
         }
     }
