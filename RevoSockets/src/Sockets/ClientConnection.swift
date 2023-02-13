@@ -46,18 +46,19 @@ public class ClientConnection {
     }
 
     private func setupReceive() {
-        nwConnection.receive(minimumIncompleteLength: 1, maximumLength: 65536) { [unowned self] (data, _, isComplete, error) in
+        nwConnection.receive(minimumIncompleteLength: 1, maximumLength: 65536) { [weak self] (data, _, isComplete, error) in
+            guard let self else { return }
             if let data = data, !data.isEmpty {
                 let message = String(data: data, encoding: .utf8)
-                log("Client connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
+                self.log("Client connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
                 self.data.append(data)
             }
             if isComplete {
-                connectionDidEnd()
+                self.connectionDidEnd()
             } else if let error = error {
-                connectionDidFail(error: error)
+                self.connectionDidFail(error: error)
             } else {
-                setupReceive()
+                self.setupReceive()
             }
         }
     }
