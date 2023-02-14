@@ -37,18 +37,19 @@ public class ServerConnection {
     }
 
     private func setupReceive() {
-        connection.receive(minimumIncompleteLength: 1, maximumLength: MTU) { [unowned self] (data, _, isComplete, error) in
+        connection.receive(minimumIncompleteLength: 1, maximumLength: MTU) { [weak self] (data, _, isComplete, error) in
+            guard let self else { return }
             if let data = data, !data.isEmpty {
                 let message = String(data: data, encoding: .utf8)
-                log("Server connection \(self.id) did receive, data: \(data as NSData) string: \(message ?? "-")")
-                didReceive(data:data)
+                self.log("Server connection \(self.id) did receive, data: \(data as NSData) string: \(message ?? "-")")
+                self.didReceive(data:data)
             }
             if isComplete {
-                connectionDidEnd()
+                self.connectionDidEnd()
             } else if let error = error {
-                connectionDidFail(error: error)
+                self.connectionDidFail(error: error)
             } else {
-                setupReceive()
+                self.setupReceive()
             }
         }
     }
