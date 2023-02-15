@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name         = "RevoSockets"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "A simple but useful sockets library."
 
   spec.description  = "A set of sockets utilities that are used into Revo projects"
@@ -35,7 +35,7 @@ Pod::Spec.new do |spec|
   # spec.watchos.deployment_target = "2.0"
   #spec.tvos.deployment_target = "13.0"
 
-  spec.source       = { :git => "https://github.com/revosystems/revosockets.git", :tag => "0.0.2" }
+  spec.source       = { :git => "https://github.com/revosystems/revosockets.git", :tag => "0.0.3" }
   spec.source_files  = "RevoSockets/src/**/*.{swift}"#, "src/**/*.{h,m}"
 
 
