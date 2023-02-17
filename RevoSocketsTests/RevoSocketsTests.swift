@@ -120,5 +120,18 @@ final class RevoSocketsTests: XCTestCase {
         XCTAssertEqual(16, response2?.age)
         XCTAssertTrue(response2!.hasSuperPowers)
     }
+    
+    func test_no_available_has_a_timeout() async {
+        let client = SocketClient(host: "10.0.0.5", port: 2000, connectionTimeoutSeconds:2)
+        let expectation = XCTestExpectation(description: "Exception thrown")
+        do {
+            try await client.start()
+                .send("")
+                .read(to: "#")
+        }catch{
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 15)
+    }
 
 }

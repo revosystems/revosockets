@@ -9,6 +9,7 @@ public class ClientConnection {
     var data:Data = Data()
     
     var debug:Bool = false
+    var socketDisconnected = false
 
     init(nwConnection: NWConnection) {
         self.nwConnection = nwConnection
@@ -84,6 +85,7 @@ public class ClientConnection {
 
     private func connectionDidFail(error: Error) {
         log("Client connection did fail, error: \(error)")
+        socketDisconnected = true
         stop(error: error)
     }
 

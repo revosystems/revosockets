@@ -14,10 +14,24 @@ public class SocketClient {
         case connectionNotReady
     }
 
-    public init(host: String, port: UInt16) {
+    public init(host: String, port: UInt16, connectionTimeoutSeconds:Int? = 10) {
         self.host = NWEndpoint.Host(host)
         self.port = NWEndpoint.Port(rawValue: port)!
-        connection = ClientConnection(nwConnection: NWConnection(host: self.host, port: self.port, using: .tcp))
+        
+        if let connectionTimeoutSeconds {
+            let options = NWProtocolTCP.Options()
+            options.connectionTimeout = connectionTimeoutSeconds
+            
+            let params = NWParameters(tls: nil, tcp: options)
+            if let isOption = params.defaultProtocolStack.internetProtocol as? NWProtocolIP.Options {
+                isOption.version = .v4
+            }
+            params.preferNoProxies = true
+            
+            connection = ClientConnection(nwConnection: NWConnection(host: self.host, port: self.port, using: params))
+        }else{
+            connection = ClientConnection(nwConnection: NWConnection(host: self.host, port: self.port, using: .tcp))
+        }
     }
 
     //MARK: - LifeCycle
