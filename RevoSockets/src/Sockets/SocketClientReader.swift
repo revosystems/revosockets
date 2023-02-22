@@ -107,9 +107,6 @@ private extension Data {
     }
     
     func oldContains(_ needle:Data) -> Bool {
-        if let range = range(of: needle) {
-            return true
-        }
-        return false
+        range(of: needle) != nil
     }
 }
