@@ -23,14 +23,15 @@ public class ClientConnection {
         }
         return try await withCheckedThrowingContinuation { continuation in
             log("Client connection will start")
-            nwConnection.stateUpdateHandler = { [unowned self] state in
-                stateDidChange(to: state)
+            nwConnection.stateUpdateHandler = { [weak self] state in
+                guard let self else { return }
+                self.stateDidChange(to: state)
                 if state == .preparing { return }
                 guard state == .ready else {
                     return continuation.resume(throwing:SocketClient.Errors.connectionError)
                 }
-                setupReceive()
-                nwConnection.stateUpdateHandler = stateDidChange(to:)
+                self.setupReceive()
+                self.nwConnection.stateUpdateHandler = self.stateDidChange(to:)
                 continuation.resume()
             }
             nwConnection.start(queue: queue)
