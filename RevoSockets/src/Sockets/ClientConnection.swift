@@ -66,12 +66,12 @@ public class ClientConnection {
     }
 
     func send(data: Data) {
-        nwConnection.send(content: data, completion: .contentProcessed( { error in
+        nwConnection.send(content: data, completion: .contentProcessed( { [weak self] error in
             if let error = error {
-                self.connectionDidFail(error: error)
+                self?.connectionDidFail(error: error)
                 return
             }
-            self.log("Client Connection did send, data: \(data as NSData)")
+            self?.log("Client Connection did send, data: \(data as NSData)")
         }))
     }
 
