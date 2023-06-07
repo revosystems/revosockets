@@ -7,7 +7,7 @@ public class ServerConnection {
 
     private static var nextID: Int = 0
     let connection: NWConnection
-    let id: Int
+    public let id: Int
     
     var debug:Bool = false
 
