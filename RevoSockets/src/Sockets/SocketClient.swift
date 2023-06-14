@@ -1,10 +1,16 @@
 import Foundation
 import Network
 
+public protocol SocketDelegate {
+    func socketDisconnected(_ error:Error?)
+}
+
 public class SocketClient {
     public var connection: ClientConnection
     public let host: NWEndpoint.Host
     public let port: NWEndpoint.Port
+    
+    public var delegate:SocketDelegate?
     
     var debug:Bool = false
     
@@ -14,9 +20,10 @@ public class SocketClient {
         case connectionNotReady
     }
 
-    public init(host: String, port: UInt16, connectionTimeoutSeconds:Int? = 10) {
-        self.host = NWEndpoint.Host(host)
-        self.port = NWEndpoint.Port(rawValue: port)!
+    public init(host: String, port: UInt16, delegate:SocketDelegate? = nil, connectionTimeoutSeconds:Int? = 10) {
+        self.host     = NWEndpoint.Host(host)
+        self.port     = NWEndpoint.Port(rawValue: port)!
+        self.delegate = delegate
         
         if let connectionTimeoutSeconds {
             let options = NWProtocolTCP.Options()
@@ -57,6 +64,7 @@ public class SocketClient {
      */
     public func stop() {
         connection.stop()
+        delegate?.socketDisconnected(nil)
     }
 
     //MARK: - Send
@@ -123,6 +131,7 @@ public class SocketClient {
     //MARK: - End
     func didStopCallback(error: Error?) {
         log("Socket Client : TODO HERE!!!")
+        delegate?.socketDisconnected(error)
         if error == nil {
             //exit(EXIT_SUCCESS)
         } else {
