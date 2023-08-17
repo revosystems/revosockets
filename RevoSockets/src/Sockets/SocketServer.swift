@@ -76,4 +76,12 @@ open class SocketServer {
         if !debug { return }
         debugPrint(message)
     }
+    
+    public var isListening:Bool{
+        listener.state == .ready
+    }
+    
+    public var connectedCount:Int{
+        connectionsByID.count
+    }
 }
