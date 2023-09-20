@@ -2,8 +2,8 @@ import Foundation
 
 struct SocketClientReader {
     
-    let READ_WAIT_NANOSECONDS_:UInt64 = 50_000_000
-    let READ_WAIT_MS:Double           = 50
+    let READ_WAIT_NANOSECONDS_:UInt64 = 30_000_000
+    let READ_WAIT_MS:Double           = 30
     
     let connection:ClientConnection
     
@@ -30,7 +30,7 @@ struct SocketClientReader {
                     if timeSpent > timeoutMs {
                         return continuation.resume(throwing: SocketClient.Errors.timeout)
                     }
-                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //50ms
+                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //30ms
                     timeSpent += READ_WAIT_MS
                 }
                 let datas = connection.data.split(separator: delimiter)
@@ -54,7 +54,7 @@ struct SocketClientReader {
                     if timeSpent > timeoutMs {
                         return continuation.resume(throwing: SocketClient.Errors.timeout)
                     }
-                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //50ms => Seconds
+                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //30ms => Seconds
                     timeSpent += READ_WAIT_MS
                 }
                 let datas = connection.data.split(separator: delimiter)
@@ -79,7 +79,7 @@ struct SocketClientReader {
                     }
                     result = try? JSONDecoder().decode(to, from: connection.data)
                     if result == nil {
-                        try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)  //50ms
+                        try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)  //30ms
                         timeSpent += READ_WAIT_MS
                     }
                 }
