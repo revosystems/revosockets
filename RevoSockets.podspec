@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name         = "RevoSockets"
-  spec.version      = "0.0.7"
+  spec.version      = "0.0.8"
   spec.summary      = "A simple but useful sockets library."
 
   spec.description  = "A set of sockets utilities that are used into Revo projects"

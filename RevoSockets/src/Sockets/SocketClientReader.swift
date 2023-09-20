@@ -1,6 +1,10 @@
 import Foundation
 
 struct SocketClientReader {
+    
+    let READ_WAIT_NANOSECONDS_:UInt64 = 50_000_000
+    let READ_WAIT_MS:Double           = 50
+    
     let connection:ClientConnection
     
     init(connection:ClientConnection) throws {
@@ -26,8 +30,8 @@ struct SocketClientReader {
                     if timeSpent > timeoutMs {
                         return continuation.resume(throwing: SocketClient.Errors.timeout)
                     }
-                    try await Task.sleep(nanoseconds: 50_000_000)   //50ms
-                    timeSpent += 50
+                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //50ms
+                    timeSpent += READ_WAIT_MS
                 }
                 let datas = connection.data.split(separator: delimiter)
                 if datas.count > 1 {
@@ -50,8 +54,8 @@ struct SocketClientReader {
                     if timeSpent > timeoutMs {
                         return continuation.resume(throwing: SocketClient.Errors.timeout)
                     }
-                    try await Task.sleep(nanoseconds: 50_000_000)   //50ms => Seconds
-                    timeSpent += 50
+                    try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)   //50ms => Seconds
+                    timeSpent += READ_WAIT_MS
                 }
                 let datas = connection.data.split(separator: delimiter)
                 if datas.count > 1 {
@@ -75,8 +79,8 @@ struct SocketClientReader {
                     }
                     result = try? JSONDecoder().decode(to, from: connection.data)
                     if result == nil {
-                        try await Task.sleep(nanoseconds: 50_000_000)  //50ms
-                        timeSpent += 50
+                        try await Task.sleep(nanoseconds: READ_WAIT_NANOSECONDS_)  //50ms
+                        timeSpent += READ_WAIT_MS
                     }
                 }
                 connection.clearBuffer()
