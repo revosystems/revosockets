@@ -84,4 +84,8 @@ open class SocketServer {
     public var connectedCount:Int{
         connectionsByID.count
     }
+    
+    public func isConnected(connectionId:Int) -> Bool {
+        connectionsByID.keys.contains(connectionId)
+    }
 }
