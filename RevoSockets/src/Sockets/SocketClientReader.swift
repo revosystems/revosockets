@@ -1,6 +1,6 @@
 import Foundation
 
-struct SocketClientReader {
+actor SocketClientReader {
     
     let READ_WAIT_NANOSECONDS_:UInt64 = 30_000_000
     let READ_WAIT_MS:Double           = 30

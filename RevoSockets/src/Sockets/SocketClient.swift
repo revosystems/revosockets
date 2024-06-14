@@ -91,12 +91,12 @@ public class SocketClient {
      Gets whatever arrived to the socket and converts it to string
      @param clearBuffer reads and clears the buffer if true, when fale, the buffer is not emptied
      */
-    public func readAsString(clearBuffer:Bool = true) throws -> String? {
-        try String(data: read(clearBuffer: clearBuffer), encoding: .utf8)
+    public func readAsString(clearBuffer:Bool = true) async throws -> String? {
+        try await String(data: read(clearBuffer: clearBuffer), encoding: .utf8)
     }
         
-    public func read(clearBuffer:Bool = true) throws -> Data {
-        try SocketClientReader(connection: connection).read(clearBuffer: clearBuffer)
+    public func read(clearBuffer:Bool = true) async throws -> Data {
+        try await SocketClientReader(connection: connection).read(clearBuffer: clearBuffer)
     }
     
     public func readAsString(to delimiter:String, timeoutMs:Double = 10000) async throws -> String? {
