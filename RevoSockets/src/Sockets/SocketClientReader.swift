@@ -35,7 +35,7 @@ actor SocketClientReader {
                 }
                 let datas = connection.data.split(separator: delimiter)
                 if datas.count > 1 {
-                    connection.data = Data(datas[1...].joined(separator: delimiter))
+                    connection.data = Data(datas[1...].joined(separator: delimiter)) + delimiter
                 }else{
                     connection.clearBuffer()
                 }
@@ -59,7 +59,7 @@ actor SocketClientReader {
                 }
                 let datas = connection.data.split(separator: delimiter)
                 if datas.count > 1 {
-                    connection.data = Data(datas[1...].joined(separator: delimiter))
+                    connection.data = Data(datas[1...].joined(separator: delimiter)) + delimiter
                 }else{
                     connection.clearBuffer()
                 }
