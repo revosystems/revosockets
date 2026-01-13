@@ -32,7 +32,7 @@ public class ClientConnection {
                 if state == .preparing { return }
                 guard state == .ready else {
                     alreadyReturned = true
-                    if alreadyReturned { return }
+                    //if alreadyReturned { return } --> It doesn't throw right errors if enabled.
                     return continuation.resume(throwing:SocketClient.Errors.connectionError)
                 }
                 self.setupReceive()
