@@ -11,8 +11,6 @@ public class ClientConnection {
     var debug:Bool = false
     var socketDisconnected = false
 
-    var alreadyReturned = false
-
     init(nwConnection: NWConnection) {
         self.nwConnection = nwConnection
     }
@@ -24,20 +22,42 @@ public class ClientConnection {
             return
         }
         return try await withCheckedThrowingContinuation { continuation in
+            var didResume = false
+
+            func resumeOnce(_ action: () -> Void) {
+                guard !didResume else { return }
+                didResume = true
+                action()
+            }
+
             log("Client connection will start")
-            alreadyReturned = false
             nwConnection.stateUpdateHandler = { [weak self] state in
                 guard let self else { return }
                 self.stateDidChange(to: state)
-                if state == .preparing { return }
-                guard state == .ready else {
-                    alreadyReturned = true
-                    //if alreadyReturned { return } --> It doesn't throw right errors if enabled.
-                    return continuation.resume(throwing:SocketClient.Errors.connectionError)
+
+                switch state {
+
+                case .cancelled:
+                    return resumeOnce { continuation.resume(throwing:SocketClient.Errors.connectionError) }
+
+                case .failed(let error):
+                    return resumeOnce { continuation.resume(throwing:SocketClient.Errors.connectionError) }
+
+                case .ready:
+                    self.setupReceive()
+                    self.nwConnection.stateUpdateHandler = self.stateDidChange(to:)
+                    return resumeOnce { continuation.resume() }
+
+                case .waiting(let error):  
+                    print("[Socket] Waiting error : \(error)")
+                    if self.isTimeoutError(error) {
+                        return resumeOnce { continuation.resume(throwing:SocketClient.Errors.connectionError) }
+                    }
+
+                default:
+                    break
+
                 }
-                self.setupReceive()
-                self.nwConnection.stateUpdateHandler = self.stateDidChange(to:)
-                continuation.resume()
             }
             nwConnection.start(queue: queue)
         }        
@@ -112,5 +132,23 @@ public class ClientConnection {
     private func log(_ message:String) {
         if !debug { return }
         debugPrint(message)
+    }
+
+    private func isTimeoutError(_ error: Error) -> Bool {
+        if let nwError = error as? NWError {
+            switch nwError {
+            case .posix(let posixError):
+                return posixError.rawValue == 60 // .ETIMEDOUT
+
+            default:
+                return false
+            }
+        }
+
+        if let posixError = error as? POSIXError {
+            return posixError.code == .ETIMEDOUT
+        }
+
+        return false
     }
 }
