@@ -11,6 +11,8 @@ public class ClientConnection {
     var debug:Bool = false
     var socketDisconnected = false
 
+    var alreadyReturned = false
+
     init(nwConnection: NWConnection) {
         self.nwConnection = nwConnection
     }
@@ -23,11 +25,14 @@ public class ClientConnection {
         }
         return try await withCheckedThrowingContinuation { continuation in
             log("Client connection will start")
+            alreadyReturned = false
             nwConnection.stateUpdateHandler = { [weak self] state in
                 guard let self else { return }
                 self.stateDidChange(to: state)
                 if state == .preparing { return }
                 guard state == .ready else {
+                    alreadyReturned = true
+                    if alreadyReturned { return }
                     return continuation.resume(throwing:SocketClient.Errors.connectionError)
                 }
                 self.setupReceive()
