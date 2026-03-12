@@ -9,6 +9,9 @@ open class SocketServer {
     var debug:Bool = false
     
     private var connectionsByID: [Int: ServerConnection] = [:]
+    
+    public var onDataReceivedDelegate: ((Data, ServerConnection) -> Void)?
+    
 
     public init(port: UInt16) throws {
         self.port = NWEndpoint.Port(rawValue: port)!
@@ -53,7 +56,7 @@ open class SocketServer {
     }
     
     open func onDataReceived(data:Data, connection:ServerConnection){
-        
+        onDataReceivedDelegate?(data, connection)
     }
 
     private func connectionDidStop(_ connection: ServerConnection) {
