@@ -48,11 +48,12 @@ public class ClientConnection {
                     self.nwConnection.stateUpdateHandler = self.stateDidChange(to:)
                     return resumeOnce { continuation.resume() }
 
-                case .waiting(let error):  
+                case .waiting(let error):
                     print("[Socket] Waiting error : \(error)")
-                    if self.isTimeoutError(error) {
-                        return resumeOnce { continuation.resume(throwing:SocketClient.Errors.connectionError) }
-                    }
+
+                   // if self.isTerminalError(error) {
+                        return resumeOnce { continuation.resume(throwing: SocketClient.Errors.connectionError) }
+                    //}
 
                 default:
                     break
@@ -134,21 +135,18 @@ public class ClientConnection {
         debugPrint(message)
     }
 
-    private func isTimeoutError(_ error: Error) -> Bool {
-        if let nwError = error as? NWError {
-            switch nwError {
-            case .posix(let posixError):
-                return posixError.rawValue == 60 // .ETIMEDOUT
-
-            default:
+    private func isTerminalError(_ error: Error) -> Bool {
+        guard let nwError = error as? NWError else { return true }
+        switch nwError {
+        case .posix(let code):
+            switch code {
+            case .ENETDOWN, .ENETUNREACH, .EHOSTUNREACH:
                 return false
+            default:
+                return true
             }
+        default:
+            return true
         }
-
-        if let posixError = error as? POSIXError {
-            return posixError.code == .ETIMEDOUT
-        }
-
-        return false
     }
 }
